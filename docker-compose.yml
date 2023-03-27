@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  php-fpm:
+    build: .docker/php
+    container_name: "feature-toggle-php"
+    entrypoint: .docker/entrypoint.sh
+    env_file:
+      - .env
+    volumes:
+      - .:/var/www
+    networks:
+      - feature-toggle-network
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  nginx:
+    build: .docker/nginx
+    container_name: "feature-toggle-nginx"
+    restart: always
+    tty: true
+    ports:
+      - "8482:80"
+    volumes:
+      - .:/var/www
+    networks:
+      - feature-toggle-network
+    depends_on:
+      - php-fpm
+
+  feature-toggle-cache:
+    restart: on-failure
+    container_name: "feature-toggle-cache"
+    image: redis:alpine
+    ports:
+      - "6370:6379"
+    networks:
+      - feature-toggle-network
+
+  feature-toggle-split-synchronizer:
+    build:
+      context: .docker/split
+      dockerfile: Dockerfile
+    restart: on-failure
+    container_name: "feature-toggle-docker-split-synchronizer"
+    env_file:
+      - .env
+    depends_on:
+      - feature-toggle-cache
+    networks:
+      - feature-toggle-network
+
+networks:
+  feature-toggle-network:
+    driver: bridge

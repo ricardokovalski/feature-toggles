@@ -1,0 +1,83 @@
+{
+  "ipAddressEnabled": true,
+  "initialization": {
+    "timeoutMS": 10000,
+    "forceFreshStartup": false
+  },
+  "storage": {
+    "type": "redis",
+    "redis": {
+      "username": "",
+      "prefix": "FEATURE_FLAG_SPLIT",
+      "network": "tcp",
+      "maxRetries": 0,
+      "dialTimeout": 5,
+      "readTimeout": 10,
+      "writeTimeout": 5,
+      "poolSize": 10,
+      "sentinelReplication": false,
+      "sentinelAddresses": "",
+      "sentinelMaster": "",
+      "clusterMode": false,
+      "clusterNodes": "",
+      "keyHashTag": "",
+      "enableTLS": false,
+      "tlsServerName": "",
+      "caCertificates": null,
+      "tlsSkipNameValidation": false,
+      "tlsClientCertificate": "",
+      "tlsClientKey": ""
+    }
+  },
+  "sync": {
+    "splitRefreshRateMs": 60000,
+    "segmentRefreshRateMs": 60000,
+    "impressionsMode": "optimized",
+    "advanced": {
+      "streamingEnabled": true,
+      "httpTimeoutMs": 30000,
+      "internalTelemetryRateMs": 3600000,
+      "telemetryPushRateMs": 60000,
+      "impressionsFetchSize": 0,
+      "impressionsProcessConcurrency": 0,
+      "impressionsProcessBatchSize": 0,
+      "impressionsPostConcurrency": 0,
+      "impressionsPostSize": 0,
+      "impressionsAccumWaitMs": 0,
+      "eventsFetchSize": 0,
+      "eventsProcessConcurrency": 0,
+      "eventsProcessBatchSize": 0,
+      "eventsPostConcurrency": 0,
+      "eventsPostSize": 0,
+      "eventsAccumWaitMs": 0
+    }
+  },
+  "admin": {
+    "host": "0.0.0.0",
+    "port": 3010,
+    "username": "",
+    "password": "",
+    "secureChecks": false
+  },
+  "integrations": {
+    "impressionListener": {
+      "endpoint": "",
+      "queueSize": 100
+    },
+    "slack": {
+      "webhook": "",
+      "channel": ""
+    }
+  },
+  "logging": {
+    "level": "info",
+    "output": "stdout",
+    "rotationMaxFiles": 10,
+    "rotationMaxSizeKb": 0
+  },
+  "healthcheck": {
+    "app": {
+      "storageCheckRateMs": 3600000
+    }
+  }
+}
