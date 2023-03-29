@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use RicardoKovalski\Toggles\Adapter\V1\SplitAdapter;
 use RicardoKovalski\Toggles\Collection\AccountIdCollection;
 
-/*$splitAdapter = new SplitAdapter();
+$splitAdapter = new SplitAdapter();
 $accountIdsCollection = new AccountIdCollection(1,2,3,4,5,6,7,8,9,10);
 $accountsFiltered = [];
 
@@ -22,7 +22,7 @@ foreach ($accountIdsCollection->getIterator() as $accountId) {
     }
     $accountsFiltered[] = $accountId;
 }
-dd(new AccountIdCollection(... $accountsFiltered));*/
+dd(new AccountIdCollection(... $accountsFiltered));
 /*
 ^ RicardoKovalski\Toggles\Collection\AccountIdCollection^ {#33
   #elements: array:4 [

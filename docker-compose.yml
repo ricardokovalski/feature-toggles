@@ -42,7 +42,7 @@ services:
       context: .docker/split
       dockerfile: Dockerfile
     restart: on-failure
-    container_name: "feature-toggle-docker-split-synchronizer"
+    container_name: "feature-toggle-split-synchronizer"
     env_file:
       - .env
     depends_on:
